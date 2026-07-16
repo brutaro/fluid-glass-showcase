@@ -13,6 +13,8 @@ import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 import { SmoothScroll } from "../components/SmoothScroll";
 
+const staticAssetBase = import.meta.env.BASE_URL;
+
 function NotFoundComponent() {
   return (
     <div className="flex min-h-screen items-center justify-center bg-background px-4">
@@ -99,9 +101,13 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     ],
     links: [
       { rel: "stylesheet", href: appCss },
-      { rel: "icon", href: "/favicon-32.png", sizes: "32x32", type: "image/png" },
-      { rel: "icon", href: "/favicon.png", sizes: "512x512", type: "image/png" },
-      { rel: "apple-touch-icon", href: "/apple-touch-icon.png", sizes: "180x180" },
+      { rel: "icon", href: `${staticAssetBase}favicon-32.png`, sizes: "32x32", type: "image/png" },
+      { rel: "icon", href: `${staticAssetBase}favicon.png`, sizes: "512x512", type: "image/png" },
+      {
+        rel: "apple-touch-icon",
+        href: `${staticAssetBase}apple-touch-icon.png`,
+        sizes: "180x180",
+      },
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
       {
         rel: "preconnect",
