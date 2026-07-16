@@ -3,6 +3,7 @@ import { useEffect, useRef, useState, type MouseEvent } from "react";
 import heroCurve from "@/assets/hero-curve.jpg";
 import portrait from "@/assets/about-portrait.jpg";
 import book from "@/assets/book.jpg";
+import carolinaResendeLogo from "@/assets/carolina-resende-logo-vinho.png";
 
 export const Route = createFileRoute("/")({
   component: Landing,
@@ -56,25 +57,26 @@ function Nav() {
     >
       <div className="container-editorial">
         <nav
-          className={`glass flex items-center justify-between rounded-full px-6 py-3 transition-all duration-500 ${
+          className={`glass flex items-center justify-between gap-3 rounded-full px-4 py-3 sm:px-6 transition-all duration-500 ${
             scrolled ? "shadow-[0_18px_48px_rgba(30,43,56,0.14)]" : ""
           }`}
         >
-          <a href="#top" className="flex items-center gap-3">
-            <span className="grid h-9 w-9 place-items-center rounded-full bg-primary text-primary-foreground font-display text-lg">
-              cr
-            </span>
-            <span className="hidden sm:block text-sm font-medium tracking-wide text-ink">
-              Carolina Resende
-            </span>
+          <a href="#top" className="block min-w-0 shrink-0" aria-label="Carolina Resende — início">
+            <img
+              src={carolinaResendeLogo}
+              alt="Carolina Resende"
+              width={1087}
+              height={59}
+              className="block h-auto w-[min(42vw,11rem)] sm:w-52 lg:w-60"
+            />
           </a>
-          <div className="hidden md:flex items-center gap-8 text-[13px] font-medium text-ink-soft">
+          <div className="hidden lg:flex items-center gap-8 text-[13px] font-medium text-ink-soft">
             <a href="#abordagem" className="link-underline">Abordagem</a>
             <a href="#servicos" className="link-underline">Serviços</a>
             <a href="#sobre" className="link-underline">Sobre</a>
             <a href="#livro" className="link-underline">Livro</a>
           </div>
-          <a href="#contato" className="btn-primary !h-10 !px-5 text-[11px]">
+          <a href="#contato" className="btn-primary shrink-0 whitespace-nowrap !h-10 !px-4 text-[10px] sm:!px-5 sm:text-[11px]">
             Fale com Carolina
           </a>
         </nav>
