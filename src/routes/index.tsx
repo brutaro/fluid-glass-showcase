@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useRef, useState, type MouseEvent } from "react";
 import { Menu, X } from "lucide-react";
-import heroCurve from "@/assets/hero-curve.jpg";
+import heroWorkshop from "@/assets/hero-workshop.jpg";
 import portrait from "@/assets/about-portrait.jpg";
 import book from "@/assets/book.jpg";
 import carolinaResendeLogo from "@/assets/carolina-resende-logo-vinho-sem-subtitulo.png";
@@ -229,17 +229,17 @@ function Hero() {
               onMouseMove={handleFluidMove}
             >
               <img
-                src={heroCurve}
-                alt="Curva editorial da marca Carolina Resende"
-                width={1600}
-                height={1200}
+                src={heroWorkshop}
+                alt="Carolina Resende conduzindo um workshop de liderança"
+                width={1122}
+                height={1402}
                 className="absolute inset-0 h-full w-full object-cover transition-transform duration-[1200ms] group-hover:scale-105"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-primary/40 via-transparent to-transparent" />
               <div className="glass-warm absolute bottom-6 left-6 right-6 rounded-2xl p-5">
-                <p className="eyebrow">A curva infinita</p>
+                <p className="eyebrow">Liderança em movimento</p>
                 <p className="mt-2 font-display text-xl text-primary">
-                  Evolução contínua, sem perder o eixo humano.
+                  Escuta que se transforma em ação.
                 </p>
               </div>
             </div>
