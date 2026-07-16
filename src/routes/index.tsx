@@ -3,7 +3,7 @@ import { useEffect, useRef, useState, type MouseEvent } from "react";
 import { Menu, X } from "lucide-react";
 import heroWorkshop from "@/assets/hero-workshop.jpg";
 import portrait from "@/assets/about-portrait.jpg";
-import book from "@/assets/book.jpg";
+import book from "@/assets/mundo-trabalho.jpg";
 import carolinaResendeLogo from "@/assets/carolina-resende-logo-vinho-sem-subtitulo.png";
 
 export const Route = createFileRoute("/")({
