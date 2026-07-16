@@ -712,14 +712,26 @@ function Field({
 function Footer() {
   return (
     <footer className="border-t border-border/60 py-12">
-      <div className="container-editorial flex flex-wrap items-center justify-between gap-6 text-sm text-ink-soft">
-        <div className="flex items-center gap-3">
-          <span className="grid h-9 w-9 place-items-center rounded-full bg-primary text-primary-foreground font-display">
-            cr
+      <div className="container-editorial flex flex-col items-center justify-between gap-6 text-sm text-ink-soft sm:flex-row sm:items-end">
+        <div className="flex flex-col items-center gap-3 text-center sm:items-start sm:text-left">
+          <a
+            href="#top"
+            className="focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-surface"
+            aria-label="Carolina Resende — início"
+          >
+            <img
+              src={carolinaResendeLogo}
+              alt="Carolina Resende"
+              width={895}
+              height={59}
+              className="h-auto w-48 sm:w-52"
+            />
+          </a>
+          <span className="text-xs text-muted-foreground">
+            © {new Date().getFullYear()} · Todos os direitos reservados
           </span>
-          <span>© {new Date().getFullYear()} Carolina Resende</span>
         </div>
-        <span className="text-xs uppercase tracking-[0.18em] text-muted-foreground">
+        <span className="max-w-56 text-center text-xs uppercase leading-relaxed tracking-[0.18em] text-muted-foreground sm:max-w-none sm:text-right sm:leading-normal">
           Liderança inteligente · Escuta qualificada
         </span>
       </div>
