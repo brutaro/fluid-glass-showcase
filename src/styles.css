@@ -128,6 +128,10 @@
   padding-block: 5rem;
 }
 
+section[id] {
+  scroll-margin-top: 7rem;
+}
+
 @media (min-width: 40rem) {
   .hero-section {
     padding-top: 9rem;
@@ -168,6 +172,12 @@
   background: color-mix(in oklab, #f3ece5 60%, transparent);
   backdrop-filter: blur(16px) saturate(130%);
   border: 1px solid color-mix(in oklab, #631f27 12%, transparent);
+}
+
+.mobile-menu-panel {
+  background: color-mix(in oklab, var(--surface) 95%, transparent);
+  backdrop-filter: blur(22px) saturate(145%);
+  border: 1px solid color-mix(in oklab, #ffffff 72%, transparent);
 }
 
 /* Pill CTA */
