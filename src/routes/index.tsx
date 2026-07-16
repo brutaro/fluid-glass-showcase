@@ -65,8 +65,8 @@ function Nav() {
             <img
               src={carolinaResendeLogo}
               alt="Carolina Resende"
-              width={1880}
-              height={160}
+              width={895}
+              height={59}
               className="block h-auto w-[min(42vw,11rem)] sm:w-52 lg:w-60"
             />
           </a>
