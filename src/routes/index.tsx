@@ -602,7 +602,7 @@ function Contact() {
   return (
     <section id="contato" className="reveal section-editorial" ref={ref}>
       <div className="container-editorial">
-        <div className="relative overflow-hidden rounded-[32px] bg-primary p-[clamp(32px,5vw,80px)] text-primary-foreground">
+        <div className="relative overflow-clip rounded-[32px] bg-primary p-[clamp(32px,5vw,80px)] text-primary-foreground lg:overflow-hidden">
           <div
             className="orb-a pointer-events-none absolute -bottom-40 -left-20 h-[420px] w-[420px] rounded-full blur-3xl opacity-40"
             style={{
@@ -610,12 +610,12 @@ function Contact() {
             }}
           />
           <div className="relative grid gap-10 sm:gap-12 lg:gap-16 lg:grid-cols-12">
-            <div className="lg:col-span-6">
+            <div className="text-center lg:col-span-6 lg:text-left">
               <span className="eyebrow !text-accent-soft">Entre em contato</span>
               <h2 className="font-display mt-5 text-[clamp(2.25rem,4.5vw,4.5rem)] leading-[1] tracking-[-0.035em]">
                 Pronto para o próximo salto da sua liderança?
               </h2>
-              <p className="mt-6 max-w-md text-lg leading-relaxed text-primary-foreground/80">
+              <p className="mx-auto mt-6 max-w-md text-lg leading-relaxed text-primary-foreground/80 lg:mx-0">
                 Vamos conversar sobre como podemos apoiar você, seu time e sua organização — com
                 estratégia, humanidade e resultado.
               </p>
@@ -638,7 +638,7 @@ function Contact() {
               </div>
             </div>
             <form
-              className="lg:col-span-6 glass-dark rounded-3xl p-8"
+              className="glass-dark mx-auto w-full max-w-lg rounded-3xl p-5 sm:p-8 lg:col-span-6 lg:mx-0 lg:max-w-none"
               onSubmit={(e) => {
                 e.preventDefault();
                 const fd = new FormData(e.currentTarget);
@@ -652,7 +652,10 @@ function Contact() {
                 <Field name="email" label="Email" type="email" />
                 <Field name="empresa" label="Empresa" />
                 <Field name="mensagem" label="Mensagem" textarea />
-                <button type="submit" className="btn-primary mt-2 !bg-accent !text-secondary">
+                <button
+                  type="submit"
+                  className="btn-primary mt-2 w-full justify-center !bg-accent !text-secondary lg:w-auto"
+                >
                   Enviar mensagem
                   <span aria-hidden>→</span>
                 </button>
@@ -669,10 +672,10 @@ function ContactLine({ label, value, href }: { label: string; value: string; hre
   return (
     <a
       href={href}
-      className="group flex items-baseline justify-between gap-6 border-b border-primary-foreground/15 pb-4"
+      className="group flex flex-col items-center gap-2 border-b border-primary-foreground/15 pb-4 text-center lg:flex-row lg:items-baseline lg:justify-between lg:gap-6 lg:text-left"
     >
       <span className="eyebrow !text-primary-foreground/60">{label}</span>
-      <span className="font-display text-xl text-primary-foreground transition-colors group-hover:text-accent">
+      <span className="max-w-full break-all font-display text-xl text-primary-foreground transition-colors group-hover:text-accent lg:break-normal">
         {value}
       </span>
     </a>
@@ -691,9 +694,9 @@ function Field({
   textarea?: boolean;
 }) {
   const cls =
-    "w-full rounded-2xl border border-primary-foreground/20 bg-primary-foreground/5 px-4 py-3 text-primary-foreground placeholder:text-primary-foreground/40 outline-none transition focus:border-accent focus:bg-primary-foreground/10";
+    "w-full rounded-2xl border border-primary-foreground/20 bg-primary-foreground/5 px-4 py-3 text-center text-primary-foreground placeholder:text-primary-foreground/40 outline-none transition focus:border-accent focus:bg-primary-foreground/10 lg:text-left";
   return (
-    <label className="block">
+    <label className="block text-center lg:text-left">
       <span className="mb-2 block text-[11px] font-semibold uppercase tracking-[0.16em] text-primary-foreground/60">
         {label}
       </span>
