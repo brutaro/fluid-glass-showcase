@@ -499,8 +499,8 @@ function About() {
               <img
                 src={portrait}
                 alt="Carolina Resende — Psicóloga e Consultora"
-                width={900}
-                height={1200}
+                width={1086}
+                height={1448}
                 loading="lazy"
                 className="h-full w-full object-cover"
               />
