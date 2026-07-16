@@ -71,12 +71,23 @@ function Nav() {
             />
           </a>
           <div className="hidden lg:flex items-center gap-8 text-[13px] font-medium text-ink-soft">
-            <a href="#abordagem" className="link-underline">Abordagem</a>
-            <a href="#servicos" className="link-underline">Serviços</a>
-            <a href="#sobre" className="link-underline">Sobre</a>
-            <a href="#livro" className="link-underline">Livro</a>
+            <a href="#abordagem" className="link-underline">
+              Abordagem
+            </a>
+            <a href="#servicos" className="link-underline">
+              Serviços
+            </a>
+            <a href="#sobre" className="link-underline">
+              Sobre
+            </a>
+            <a href="#livro" className="link-underline">
+              Livro
+            </a>
           </div>
-          <a href="#contato" className="btn-primary shrink-0 whitespace-nowrap !h-10 !px-4 text-[10px] sm:!px-5 sm:text-[11px]">
+          <a
+            href="#contato"
+            className="btn-primary shrink-0 whitespace-nowrap !h-10 !px-4 text-[10px] sm:!px-5 sm:text-[11px]"
+          >
             Fale com Carolina
           </a>
         </nav>
@@ -104,16 +115,14 @@ function Hero() {
       <div
         className="orb-a pointer-events-none absolute -top-40 -left-40 h-[520px] w-[520px] rounded-full opacity-70 blur-3xl"
         style={{
-          background:
-            "radial-gradient(circle, rgba(215,107,82,0.35), transparent 60%)",
+          background: "radial-gradient(circle, rgba(215,107,82,0.35), transparent 60%)",
           transform: `translate(${mouse.x}px, ${mouse.y}px)`,
         }}
       />
       <div
         className="orb-b pointer-events-none absolute top-20 -right-32 h-[560px] w-[560px] rounded-full opacity-60 blur-3xl"
         style={{
-          background:
-            "radial-gradient(circle, rgba(99,31,39,0.28), transparent 60%)",
+          background: "radial-gradient(circle, rgba(99,31,39,0.28), transparent 60%)",
           transform: `translate(${-mouse.x}px, ${-mouse.y}px)`,
         }}
       />
@@ -128,14 +137,12 @@ function Hero() {
             <h1 className="font-display mt-6 text-[clamp(3rem,7.5vw,6.75rem)] leading-[0.95] tracking-[-0.04em] text-primary">
               Transformação real
               <br />
-              pela{" "}
-              <em className="italic text-accent font-normal">escuta</em> que
-              lidera.
+              pela <em className="italic text-accent font-normal">escuta</em> que lidera.
             </h1>
             <p className="mt-8 max-w-xl text-lg leading-relaxed text-ink-soft">
-              Programas premium de liderança, mentoria executiva e consultoria
-              organizacional que unem ciência, estratégia e sensibilidade
-              humana — para líderes que decidem crescer com propósito.
+              Programas premium de liderança, mentoria executiva e consultoria organizacional que
+              unem ciência, estratégia e sensibilidade humana — para líderes que decidem crescer com
+              propósito.
             </p>
             <div className="mt-10 flex flex-wrap items-center gap-4">
               <a href="#contato" className="btn-primary">
@@ -184,9 +191,7 @@ function Stat({ value, label }: { value: string; label: string }) {
   return (
     <div>
       <div className="font-display text-2xl text-primary">{value}</div>
-      <div className="text-xs uppercase tracking-[0.15em] text-muted-foreground">
-        {label}
-      </div>
+      <div className="text-xs uppercase tracking-[0.15em] text-muted-foreground">{label}</div>
     </div>
   );
 }
@@ -205,10 +210,7 @@ function Marquee() {
     <div className="relative overflow-hidden border-y border-border/60 bg-surface-deep/60 py-6">
       <div className="marquee-track flex w-max gap-14 whitespace-nowrap">
         {[...items, ...items, ...items].map((it, i) => (
-          <span
-            key={i}
-            className="font-display text-lg text-primary/70 flex items-center gap-14"
-          >
+          <span key={i} className="font-display text-lg text-primary/70 flex items-center gap-14">
             {it}
             <span className="h-1.5 w-1.5 rounded-full bg-accent" />
           </span>
@@ -248,32 +250,21 @@ function Approach() {
             </h2>
           </div>
           <p className="lg:col-span-6 lg:col-start-7 text-lg leading-relaxed text-ink-soft">
-            Integramos saúde mental, qualidade de vida no trabalho e gestão ágil
-            sem perder o foco estratégico nas pessoas. Diagnósticos, pesquisas e
-            implementação completa da NR-01 — personalizados, com apoio de
-            inteligência artificial.
+            Integramos saúde mental, qualidade de vida no trabalho e gestão ágil sem perder o foco
+            estratégico nas pessoas. Diagnósticos, pesquisas e implementação completa da NR-01 —
+            personalizados, com apoio de inteligência artificial.
           </p>
         </div>
 
         <div className="mt-16 grid gap-6 md:grid-cols-3">
           {pillars.map((p) => (
-            <article
-              key={p.k}
-              className="fluid-card p-8"
-              onMouseMove={handleFluidMove}
-            >
+            <article key={p.k} className="fluid-card p-8" onMouseMove={handleFluidMove}>
               <div className="flex items-center justify-between">
-                <span className="font-display text-3xl text-accent">
-                  {p.k}
-                </span>
+                <span className="font-display text-3xl text-accent">{p.k}</span>
                 <span className="h-px w-16 bg-border transition-all duration-500 group-hover:w-24" />
               </div>
-              <h3 className="font-display mt-8 text-2xl text-primary">
-                {p.title}
-              </h3>
-              <p className="mt-4 text-[15px] leading-relaxed text-ink-soft">
-                {p.desc}
-              </p>
+              <h3 className="font-display mt-8 text-2xl text-primary">{p.title}</h3>
+              <p className="mt-4 text-[15px] leading-relaxed text-ink-soft">{p.desc}</p>
             </article>
           ))}
         </div>
@@ -322,11 +313,7 @@ function Services() {
 
         <div className="mt-16 grid gap-6 md:grid-cols-2">
           {services.map((s) => (
-            <article
-              key={s.title}
-              className="fluid-card group p-10"
-              onMouseMove={handleFluidMove}
-            >
+            <article key={s.title} className="fluid-card group p-10" onMouseMove={handleFluidMove}>
               <div className="flex items-center gap-3">
                 <span className="rounded-full border border-primary/30 bg-background/60 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.14em] text-primary">
                   {s.tag}
@@ -335,9 +322,7 @@ function Services() {
               <h3 className="font-display mt-6 text-[clamp(1.75rem,2.4vw,2.25rem)] text-primary leading-tight">
                 {s.title}
               </h3>
-              <p className="mt-4 text-[15px] leading-relaxed text-ink-soft">
-                {s.desc}
-              </p>
+              <p className="mt-4 text-[15px] leading-relaxed text-ink-soft">{s.desc}</p>
               <ul className="mt-8 space-y-2 border-t border-border/70 pt-6 text-sm text-ink">
                 {s.points.map((pt) => (
                   <li key={pt} className="flex items-center gap-3">
@@ -377,7 +362,11 @@ function ForWho() {
     {
       t: "Profissionais",
       d: "Profissionais que se preparam para posições de liderança e para o próximo salto de carreira.",
-      list: ["Preparação para liderança", "Desenvolvimento de carreira", "Competências interpessoais"],
+      list: [
+        "Preparação para liderança",
+        "Desenvolvimento de carreira",
+        "Competências interpessoais",
+      ],
     },
     {
       t: "Organizações",
@@ -392,8 +381,7 @@ function ForWho() {
           <div
             className="pointer-events-none absolute -top-40 -right-40 h-[500px] w-[500px] rounded-full blur-3xl opacity-40"
             style={{
-              background:
-                "radial-gradient(circle, rgba(215,107,82,0.6), transparent 60%)",
+              background: "radial-gradient(circle, rgba(215,107,82,0.6), transparent 60%)",
             }}
           />
           <div className="relative">
@@ -418,9 +406,7 @@ function ForWho() {
                     }}
                   />
                   <h3 className="font-display text-2xl">{g.t}</h3>
-                  <p className="mt-3 text-sm leading-relaxed text-primary-foreground/75">
-                    {g.d}
-                  </p>
+                  <p className="mt-3 text-sm leading-relaxed text-primary-foreground/75">{g.d}</p>
                   <ul className="mt-6 space-y-2 border-t border-primary-foreground/15 pt-5 text-sm text-primary-foreground/85">
                     {g.list.map((x) => (
                       <li key={x} className="flex items-center gap-3">
@@ -446,10 +432,7 @@ function About() {
       <div className="container-editorial">
         <div className="grid gap-16 lg:grid-cols-12 lg:items-center">
           <div className="lg:col-span-5">
-            <div
-              className="fluid-card aspect-[3/4] overflow-hidden"
-              onMouseMove={handleFluidMove}
-            >
+            <div className="fluid-card aspect-[3/4] overflow-hidden" onMouseMove={handleFluidMove}>
               <img
                 src={portrait}
                 alt="Carolina Resende — Psicóloga e Consultora"
@@ -466,19 +449,16 @@ function About() {
               A escuta que forma líderes de verdade.
             </h2>
             <p className="mt-6 text-lg leading-relaxed text-ink-soft">
-              Doutora em Psicologia, professora universitária e pesquisadora em
-              competências socioemocionais, saúde mental corporativa e gestão de
-              riscos psicossociais. Consultora individual do{" "}
-              <strong className="text-primary">PNUD/ONU</strong> desde 2020 na
+              Doutora em Psicologia, professora universitária e pesquisadora em competências
+              socioemocionais, saúde mental corporativa e gestão de riscos psicossociais. Consultora
+              individual do <strong className="text-primary">PNUD/ONU</strong> desde 2020 na
               temática Soft Skills e competências de liderança.
             </p>
             <p className="mt-4 text-lg leading-relaxed text-ink-soft">
-              Professora convidada na <strong className="text-primary">ENAP</strong>{" "}
-              no programa LideraGOV e Prof. Adjunto IV da{" "}
-              <strong className="text-primary">PUC Minas</strong>, onde coordena
-              programas de extensão e pesquisa. Doutorado sanduíche na{" "}
-              <em>Université Paris Descartes</em> (Paris V), financiado pela
-              CAPES.
+              Professora convidada na <strong className="text-primary">ENAP</strong> no programa
+              LideraGOV e Prof. Adjunto IV da <strong className="text-primary">PUC Minas</strong>,
+              onde coordena programas de extensão e pesquisa. Doutorado sanduíche na{" "}
+              <em>Université Paris Descartes</em> (Paris V), financiado pela CAPES.
             </p>
             <div className="mt-10 grid grid-cols-2 gap-4 sm:grid-cols-4">
               {["PNUD/ONU", "ENAP", "PUC Minas", "Paris V"].map((c) => (
@@ -509,10 +489,9 @@ function Book() {
               O mundo do trabalho na era organizacional.
             </h2>
             <p className="mt-6 text-lg leading-relaxed text-ink-soft">
-              Uma discussão crítica da relação trabalhador × organização, apoiada
-              em comportamento organizacional, psicologia do trabalho e gestão
-              de pessoas. Insights práticos e estratégias baseadas em evidência
-              para consolidar cultura de alta performance.
+              Uma discussão crítica da relação trabalhador × organização, apoiada em comportamento
+              organizacional, psicologia do trabalho e gestão de pessoas. Insights práticos e
+              estratégias baseadas em evidência para consolidar cultura de alta performance.
             </p>
             <div className="mt-8 flex flex-wrap items-center gap-3 text-xs uppercase tracking-[0.14em] text-ink-soft">
               <span className="rounded-full border border-border bg-card px-3 py-1.5">
@@ -538,10 +517,7 @@ function Book() {
             </div>
           </div>
           <div className="lg:col-span-5">
-            <div
-              className="fluid-card aspect-[3/4] overflow-hidden"
-              onMouseMove={handleFluidMove}
-            >
+            <div className="fluid-card aspect-[3/4] overflow-hidden" onMouseMove={handleFluidMove}>
               <img
                 src={book}
                 alt="Livro: O mundo do trabalho na era organizacional"
@@ -567,8 +543,7 @@ function Contact() {
           <div
             className="orb-a pointer-events-none absolute -bottom-40 -left-20 h-[420px] w-[420px] rounded-full blur-3xl opacity-40"
             style={{
-              background:
-                "radial-gradient(circle, rgba(215,107,82,0.7), transparent 60%)",
+              background: "radial-gradient(circle, rgba(215,107,82,0.7), transparent 60%)",
             }}
           />
           <div className="relative grid gap-16 lg:grid-cols-12">
@@ -578,8 +553,8 @@ function Contact() {
                 Pronto para o próximo salto da sua liderança?
               </h2>
               <p className="mt-6 max-w-md text-lg leading-relaxed text-primary-foreground/80">
-                Vamos conversar sobre como podemos apoiar você, seu time e sua
-                organização — com estratégia, humanidade e resultado.
+                Vamos conversar sobre como podemos apoiar você, seu time e sua organização — com
+                estratégia, humanidade e resultado.
               </p>
               <div className="mt-10 space-y-5">
                 <ContactLine
@@ -627,15 +602,7 @@ function Contact() {
   );
 }
 
-function ContactLine({
-  label,
-  value,
-  href,
-}: {
-  label: string;
-  value: string;
-  href: string;
-}) {
+function ContactLine({ label, value, href }: { label: string; value: string; href: string }) {
   return (
     <a
       href={href}
