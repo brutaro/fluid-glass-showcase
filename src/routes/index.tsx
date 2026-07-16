@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useRef, useState, type MouseEvent } from "react";
+import { Menu, X } from "lucide-react";
 import heroCurve from "@/assets/hero-curve.jpg";
 import portrait from "@/assets/about-portrait.jpg";
 import book from "@/assets/book.jpg";
@@ -39,16 +40,36 @@ function handleFluidMove(e: MouseEvent<HTMLElement>) {
   e.currentTarget.style.setProperty("--my", `${e.clientY - rect.top}px`);
 }
 
+const navigationItems = [
+  { href: "#abordagem", label: "Abordagem" },
+  { href: "#servicos", label: "Serviços" },
+  { href: "#for-who", label: "Para quem" },
+  { href: "#sobre", label: "Sobre" },
+  { href: "#livro", label: "Livro" },
+];
+
 /* ---------- sections ---------- */
 
 function Nav() {
   const [scrolled, setScrolled] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
+
+  useEffect(() => {
+    if (!mobileMenuOpen) return;
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") setMobileMenuOpen(false);
+    };
+    window.addEventListener("keydown", onKeyDown);
+    return () => window.removeEventListener("keydown", onKeyDown);
+  }, [mobileMenuOpen]);
+
   return (
     <header
       className={`fixed inset-x-0 top-0 z-50 transition-all duration-500 ${
@@ -57,11 +78,17 @@ function Nav() {
     >
       <div className="container-editorial">
         <nav
-          className={`glass flex items-center justify-between gap-3 rounded-full px-4 py-3 sm:px-6 transition-all duration-500 ${
+          aria-label="Navegação principal"
+          className={`glass relative flex items-center justify-between gap-3 rounded-full px-4 py-3 sm:px-6 transition-all duration-500 ${
             scrolled ? "shadow-[0_18px_48px_rgba(30,43,56,0.14)]" : ""
           }`}
         >
-          <a href="#top" className="block min-w-0 shrink-0" aria-label="Carolina Resende — início">
+          <a
+            href="#top"
+            className="block min-w-0 shrink-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-surface"
+            aria-label="Carolina Resende — início"
+            onClick={() => setMobileMenuOpen(false)}
+          >
             <img
               src={carolinaResendeLogo}
               alt="Carolina Resende"
@@ -71,25 +98,61 @@ function Nav() {
             />
           </a>
           <div className="hidden lg:flex items-center gap-8 text-[13px] font-medium text-ink-soft">
-            <a href="#abordagem" className="link-underline">
-              Abordagem
-            </a>
-            <a href="#servicos" className="link-underline">
-              Serviços
-            </a>
-            <a href="#sobre" className="link-underline">
-              Sobre
-            </a>
-            <a href="#livro" className="link-underline">
-              Livro
-            </a>
+            {navigationItems.map((item) => (
+              <a key={item.href} href={item.href} className="link-underline">
+                {item.label}
+              </a>
+            ))}
           </div>
           <a
             href="#contato"
-            className="btn-primary shrink-0 whitespace-nowrap !h-10 !px-4 text-[10px] sm:!px-5 sm:text-[11px]"
+            className="btn-primary hidden shrink-0 whitespace-nowrap !h-10 !px-5 text-[11px] lg:inline-flex"
           >
             Fale com Carolina
           </a>
+          <button
+            type="button"
+            className="flex size-10 shrink-0 items-center justify-center rounded-full border border-primary/15 text-primary transition-colors hover:bg-primary/8 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-surface lg:hidden"
+            aria-label={mobileMenuOpen ? "Fechar menu de navegação" : "Abrir menu de navegação"}
+            aria-controls="mobile-navigation"
+            aria-expanded={mobileMenuOpen}
+            onClick={() => setMobileMenuOpen((open) => !open)}
+          >
+            {mobileMenuOpen ? (
+              <X aria-hidden="true" size={20} />
+            ) : (
+              <Menu aria-hidden="true" size={20} />
+            )}
+          </button>
+          {mobileMenuOpen && (
+            <div
+              id="mobile-navigation"
+              className="mobile-menu-panel absolute left-0 right-0 top-[calc(100%+0.75rem)] max-h-[calc(100vh-6rem)] overflow-y-auto rounded-3xl p-3 shadow-[0_20px_54px_rgba(30,43,56,0.18)] lg:hidden"
+            >
+              <div className="flex flex-col gap-1">
+                {navigationItems.map((item) => (
+                  <a
+                    key={item.href}
+                    href={item.href}
+                    className="flex items-center justify-between rounded-2xl px-4 py-3 text-sm font-medium text-ink-soft transition-colors hover:bg-primary/8 hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+                    onClick={() => setMobileMenuOpen(false)}
+                  >
+                    {item.label}
+                    <span aria-hidden="true" className="text-primary/60">
+                      →
+                    </span>
+                  </a>
+                ))}
+              </div>
+              <a
+                href="#contato"
+                className="btn-primary mt-3 w-full justify-center !h-11 !px-5 text-[11px]"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                Fale com Carolina
+              </a>
+            </div>
+          )}
         </nav>
       </div>
     </header>
@@ -375,7 +438,7 @@ function ForWho() {
     },
   ];
   return (
-    <section className="reveal section-editorial relative" ref={ref}>
+    <section id="for-who" className="reveal section-editorial relative" ref={ref}>
       <div className="container-editorial">
         <div className="relative overflow-hidden rounded-[32px] bg-secondary p-[clamp(32px,5vw,72px)] text-primary-foreground">
           <div
