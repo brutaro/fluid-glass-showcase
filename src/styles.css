@@ -119,6 +119,37 @@
   padding-inline: clamp(20px, 5vw, 72px);
 }
 
+.hero-section {
+  padding-top: 8rem;
+  padding-bottom: 5rem;
+}
+
+.section-editorial {
+  padding-block: 5rem;
+}
+
+@media (min-width: 40rem) {
+  .hero-section {
+    padding-top: 9rem;
+    padding-bottom: 6rem;
+  }
+
+  .section-editorial {
+    padding-block: 6rem;
+  }
+}
+
+@media (min-width: 64rem) {
+  .hero-section {
+    padding-top: 10rem;
+    padding-bottom: 8rem;
+  }
+
+  .section-editorial {
+    padding-block: 8rem;
+  }
+}
+
 /* Glassmorphism surfaces */
 @utility glass {
   background: color-mix(in oklab, #ffffff 55%, transparent);
