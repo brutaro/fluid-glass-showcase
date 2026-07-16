@@ -110,7 +110,7 @@ function Hero() {
   }, []);
 
   return (
-    <section id="top" className="relative overflow-hidden pt-40 pb-32">
+    <section id="top" className="hero-section relative overflow-hidden">
       {/* ambient orbs */}
       <div
         className="orb-a pointer-events-none absolute -top-40 -left-40 h-[520px] w-[520px] rounded-full opacity-70 blur-3xl"
@@ -128,7 +128,7 @@ function Hero() {
       />
 
       <div className="container-editorial relative">
-        <div className="grid gap-16 lg:grid-cols-12 lg:items-end">
+        <div className="grid gap-10 sm:gap-12 lg:gap-16 lg:grid-cols-12 lg:items-end">
           <div className="lg:col-span-7">
             <span className="eyebrow inline-flex items-center gap-2">
               <span className="h-px w-8 bg-primary" />
@@ -153,7 +153,7 @@ function Hero() {
                 Conheça a abordagem
               </a>
             </div>
-            <div className="mt-14 flex flex-wrap gap-x-10 gap-y-4 text-sm text-ink-soft">
+            <div className="mt-10 flex flex-wrap gap-x-10 gap-y-4 text-sm text-ink-soft sm:mt-12 lg:mt-14">
               <Stat value="15+" label="anos formando líderes" />
               <Stat value="PNUD / ONU" label="consultora individual" />
               <Stat value="Dra. em Psicologia" label="PUC Minas · Paris V" />
@@ -240,7 +240,7 @@ function Approach() {
     },
   ];
   return (
-    <section id="abordagem" className="reveal py-32" ref={ref}>
+    <section id="abordagem" className="reveal section-editorial" ref={ref}>
       <div className="container-editorial">
         <div className="grid gap-12 lg:grid-cols-12 lg:items-end">
           <div className="lg:col-span-5">
@@ -256,7 +256,7 @@ function Approach() {
           </p>
         </div>
 
-        <div className="mt-16 grid gap-6 md:grid-cols-3">
+        <div className="mt-10 grid gap-6 sm:mt-12 lg:mt-16 md:grid-cols-3">
           {pillars.map((p) => (
             <article key={p.k} className="fluid-card p-8" onMouseMove={handleFluidMove}>
               <div className="flex items-center justify-between">
@@ -302,7 +302,7 @@ function Services() {
     },
   ];
   return (
-    <section id="servicos" className="reveal py-32" ref={ref}>
+    <section id="servicos" className="reveal section-editorial" ref={ref}>
       <div className="container-editorial">
         <div className="max-w-3xl">
           <span className="eyebrow">Serviços</span>
@@ -311,7 +311,7 @@ function Services() {
           </h2>
         </div>
 
-        <div className="mt-16 grid gap-6 md:grid-cols-2">
+        <div className="mt-10 grid gap-6 sm:mt-12 lg:mt-16 md:grid-cols-2">
           {services.map((s) => (
             <article key={s.title} className="fluid-card group p-10" onMouseMove={handleFluidMove}>
               <div className="flex items-center gap-3">
@@ -375,7 +375,7 @@ function ForWho() {
     },
   ];
   return (
-    <section className="reveal relative py-32" ref={ref}>
+    <section className="reveal section-editorial relative" ref={ref}>
       <div className="container-editorial">
         <div className="relative overflow-hidden rounded-[32px] bg-secondary p-[clamp(32px,5vw,72px)] text-primary-foreground">
           <div
@@ -390,7 +390,7 @@ function ForWho() {
               Para quem lidera pessoas — e pessoas que decidiram liderar.
             </h2>
 
-            <div className="mt-14 grid gap-4 md:grid-cols-3">
+            <div className="mt-10 grid gap-4 sm:mt-12 lg:mt-14 md:grid-cols-3">
               {groups.map((g) => (
                 <div
                   key={g.t}
@@ -428,9 +428,9 @@ function ForWho() {
 function About() {
   const ref = useReveal<HTMLDivElement>();
   return (
-    <section id="sobre" className="reveal py-32" ref={ref}>
+    <section id="sobre" className="reveal section-editorial" ref={ref}>
       <div className="container-editorial">
-        <div className="grid gap-16 lg:grid-cols-12 lg:items-center">
+        <div className="grid gap-10 sm:gap-12 lg:gap-16 lg:grid-cols-12 lg:items-center">
           <div className="lg:col-span-5">
             <div className="fluid-card aspect-[3/4] overflow-hidden" onMouseMove={handleFluidMove}>
               <img
@@ -480,7 +480,7 @@ function About() {
 function Book() {
   const ref = useReveal<HTMLDivElement>();
   return (
-    <section id="livro" className="reveal py-32" ref={ref}>
+    <section id="livro" className="reveal section-editorial" ref={ref}>
       <div className="container-editorial">
         <div className="grid gap-12 lg:grid-cols-12 lg:items-center">
           <div className="lg:col-span-7">
@@ -537,7 +537,7 @@ function Book() {
 function Contact() {
   const ref = useReveal<HTMLDivElement>();
   return (
-    <section id="contato" className="reveal py-32" ref={ref}>
+    <section id="contato" className="reveal section-editorial" ref={ref}>
       <div className="container-editorial">
         <div className="relative overflow-hidden rounded-[32px] bg-primary p-[clamp(32px,5vw,80px)] text-primary-foreground">
           <div
@@ -546,7 +546,7 @@ function Contact() {
               background: "radial-gradient(circle, rgba(215,107,82,0.7), transparent 60%)",
             }}
           />
-          <div className="relative grid gap-16 lg:grid-cols-12">
+          <div className="relative grid gap-10 sm:gap-12 lg:gap-16 lg:grid-cols-12">
             <div className="lg:col-span-6">
               <span className="eyebrow !text-accent-soft">Entre em contato</span>
               <h2 className="font-display mt-5 text-[clamp(2.25rem,4.5vw,4.5rem)] leading-[1] tracking-[-0.035em]">
