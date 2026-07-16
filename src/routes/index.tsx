@@ -3,7 +3,7 @@ import { useEffect, useRef, useState, type MouseEvent } from "react";
 import heroCurve from "@/assets/hero-curve.jpg";
 import portrait from "@/assets/about-portrait.jpg";
 import book from "@/assets/book.jpg";
-import carolinaResendeLogo from "@/assets/carolina-resende-logo-vinho.png";
+import carolinaResendeLogo from "@/assets/carolina-resende-logo-vinho-sem-subtitulo.png";
 
 export const Route = createFileRoute("/")({
   component: Landing,
@@ -65,8 +65,8 @@ function Nav() {
             <img
               src={carolinaResendeLogo}
               alt="Carolina Resende"
-              width={1087}
-              height={59}
+              width={1880}
+              height={160}
               className="block h-auto w-[min(42vw,11rem)] sm:w-52 lg:w-60"
             />
           </a>
