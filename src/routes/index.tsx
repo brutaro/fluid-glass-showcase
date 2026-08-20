@@ -1,9 +1,10 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useEffect, useRef, useState, type MouseEvent } from "react";
-import { Menu, X } from "lucide-react";
+import { useEffect, useRef, useState, type FormEvent, type MouseEvent } from "react";
+import { CheckCircle2, Loader2, Menu, X } from "lucide-react";
+import { toast } from "sonner";
 import heroWorkshop from "@/assets/hero-workshop.jpg";
 import portrait from "@/assets/about-portrait.jpg";
-import book from "@/assets/mundo-trabalho.jpg";
+import book from "@/assets/workbook-capa.jpg";
 import carolinaResendeLogo from "@/assets/carolina-resende-logo-vinho-sem-subtitulo.png";
 
 export const Route = createFileRoute("/")({
@@ -45,7 +46,7 @@ const navigationItems = [
   { href: "#servicos", label: "Serviços" },
   { href: "#for-who", label: "Para quem" },
   { href: "#sobre", label: "Sobre" },
-  { href: "#livro", label: "Livro" },
+  { href: "#livro", label: "Workbook" },
 ];
 
 /* ---------- sections ---------- */
@@ -547,26 +548,27 @@ function Book() {
       <div className="container-editorial">
         <div className="grid gap-12 lg:grid-cols-12 lg:items-center">
           <div className="lg:col-span-7">
-            <span className="eyebrow">Liderança para alta performance</span>
+            <span className="eyebrow">Workbook Prático · Liderança Inteligente</span>
             <h2 className="font-display mt-5 text-[clamp(2.25rem,4.5vw,4rem)] leading-[1.02] text-primary tracking-[-0.03em]">
-              O mundo do trabalho na era organizacional.
+              Clareza para liderar. Segurança para decidir. Força para mudar.
             </h2>
             <p className="mt-6 text-lg leading-relaxed text-ink-soft">
-              Uma discussão crítica da relação trabalhador × organização, apoiada em comportamento
-              organizacional, psicologia do trabalho e gestão de pessoas. Insights práticos e
-              estratégias baseadas em evidência para consolidar cultura de alta performance.
+              Um guia prático de 12 unidades com sínteses visuais, fundamentação sólida e fichas de aplicação para liderar com autonomia, clareza e alta performance. Desenvolvido para transformar reflexão em decisões executáveis no seu dia a dia.
             </p>
             <div className="mt-8 flex flex-wrap items-center gap-3 text-xs uppercase tracking-[0.14em] text-ink-soft">
               <span className="rounded-full border border-border bg-card px-3 py-1.5">
-                Baseado em pesquisa científica
+                12 Unidades Práticas
               </span>
               <span className="rounded-full border border-border bg-card px-3 py-1.5">
-                Formato físico
+                Síntese Visual de Alto Impacto
+              </span>
+              <span className="rounded-full border border-border bg-card px-3 py-1.5">
+                Aplicação Imediata
               </span>
             </div>
             <div className="mt-10 flex flex-wrap gap-4">
               <a
-                href="https://www.paypal.com/ncp/payment/FFW6V8PNMLC56"
+                href="https://pay.hotmart.com/E107118686I"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="btn-primary"
@@ -575,7 +577,7 @@ function Book() {
                 <span aria-hidden>→</span>
               </a>
               <span className="self-center text-xs text-muted-foreground">
-                Pagamento seguro via PayPal
+                Pagamento seguro via Hotmart
               </span>
             </div>
           </div>
@@ -583,7 +585,7 @@ function Book() {
             <div className="fluid-card aspect-[3/4] overflow-hidden" onMouseMove={handleFluidMove}>
               <img
                 src={book}
-                alt="Livro: O mundo do trabalho na era organizacional"
+                alt="Workbook: Carolina Resende"
                 width={900}
                 height={1200}
                 loading="lazy"
@@ -599,6 +601,62 @@ function Book() {
 
 function Contact() {
   const ref = useReveal<HTMLDivElement>();
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSuccess, setIsSuccess] = useState(false);
+
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const form = e.currentTarget;
+    const fd = new FormData(form);
+    const nome = String(fd.get("nome") || "").trim();
+    const email = String(fd.get("email") || "").trim();
+    const empresa = String(fd.get("empresa") || "").trim();
+    const mensagem = String(fd.get("mensagem") || "").trim();
+
+    if (!nome || !email || !mensagem) {
+      toast.error("Por favor, preencha os campos obrigatórios (Nome, Email e Mensagem).");
+      return;
+    }
+
+    setIsSubmitting(true);
+    try {
+      const response = await fetch(
+        "https://formsubmit.co/ajax/carolinaresende@crlideranca.com.br",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json",
+          },
+          body: JSON.stringify({
+            Nome: nome,
+            Email: email,
+            Empresa: empresa || "Não informada",
+            Mensagem: mensagem,
+            _subject: `Novo contato pelo site: ${nome}${empresa ? ` (${empresa})` : ""}`,
+            _template: "table",
+            _captcha: "false",
+          }),
+        }
+      );
+
+      if (!response.ok) {
+        throw new Error(`Erro ${response.status}`);
+      }
+
+      setIsSuccess(true);
+      form.reset();
+      toast.success("Mensagem enviada com sucesso! Carolina retornará seu contato em breve.");
+    } catch (err) {
+      console.error("Erro ao enviar formulário:", err);
+      toast.error(
+        "Houve um problema ao enviar sua mensagem. Por favor, tente novamente ou utilize o WhatsApp."
+      );
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
   return (
     <section id="contato" className="reveal section-editorial" ref={ref}>
       <div className="container-editorial">
@@ -637,30 +695,67 @@ function Contact() {
                 />
               </div>
             </div>
-            <form
-              className="glass-dark mx-auto w-full max-w-lg rounded-3xl p-5 sm:p-8 lg:col-span-6 lg:mx-0 lg:max-w-none"
-              onSubmit={(e) => {
-                e.preventDefault();
-                const fd = new FormData(e.currentTarget);
-                const nome = fd.get("nome");
-                const msg = fd.get("mensagem");
-                window.location.href = `mailto:carolinaresende@crlideranca.com.br?subject=Contato de ${nome}&body=${encodeURIComponent(String(msg ?? ""))}`;
-              }}
-            >
-              <div className="grid gap-4">
-                <Field name="nome" label="Nome" />
-                <Field name="email" label="Email" type="email" />
-                <Field name="empresa" label="Empresa" />
-                <Field name="mensagem" label="Mensagem" textarea />
+            {isSuccess ? (
+              <div className="glass-dark mx-auto flex w-full max-w-lg flex-col items-center justify-center rounded-3xl p-8 text-center lg:col-span-6 lg:mx-0 lg:max-w-none">
+                <div className="flex size-14 items-center justify-center rounded-full bg-accent/20 text-accent">
+                  <CheckCircle2 size={32} />
+                </div>
+                <h3 className="font-display mt-5 text-2xl text-primary-foreground">
+                  Mensagem enviada com sucesso!
+                </h3>
+                <p className="mt-3 text-sm leading-relaxed text-primary-foreground/80">
+                  Obrigado pelo contato. Carolina retornará o mais breve possível para o email informado.
+                </p>
                 <button
-                  type="submit"
-                  className="btn-primary mt-2 w-full justify-center !bg-accent !text-secondary lg:w-auto"
+                  type="button"
+                  onClick={() => setIsSuccess(false)}
+                  className="btn-primary mt-6 !bg-accent !text-secondary"
                 >
-                  Enviar mensagem
-                  <span aria-hidden>→</span>
+                  Enviar outra mensagem
                 </button>
               </div>
-            </form>
+            ) : (
+              <form
+                className="glass-dark mx-auto w-full max-w-lg rounded-3xl p-5 sm:p-8 lg:col-span-6 lg:mx-0 lg:max-w-none"
+                onSubmit={handleSubmit}
+              >
+                <div className="grid gap-4">
+                  <Field name="nome" label="Nome *" required disabled={isSubmitting} />
+                  <Field
+                    name="email"
+                    label="Email *"
+                    type="email"
+                    required
+                    disabled={isSubmitting}
+                  />
+                  <Field name="empresa" label="Empresa" disabled={isSubmitting} />
+                  <Field
+                    name="mensagem"
+                    label="Mensagem *"
+                    textarea
+                    required
+                    disabled={isSubmitting}
+                  />
+                  <button
+                    type="submit"
+                    disabled={isSubmitting}
+                    className="btn-primary mt-2 w-full justify-center !bg-accent !text-secondary disabled:opacity-60 disabled:cursor-not-allowed lg:w-auto"
+                  >
+                    {isSubmitting ? (
+                      <span className="inline-flex items-center gap-2">
+                        <Loader2 className="size-4 animate-spin" />
+                        Enviando...
+                      </span>
+                    ) : (
+                      <>
+                        Enviar mensagem
+                        <span aria-hidden>→</span>
+                      </>
+                    )}
+                  </button>
+                </div>
+              </form>
+            )}
           </div>
         </div>
       </div>
@@ -687,23 +782,39 @@ function Field({
   label,
   type = "text",
   textarea,
+  required,
+  disabled,
 }: {
   name: string;
   label: string;
   type?: string;
   textarea?: boolean;
+  required?: boolean;
+  disabled?: boolean;
 }) {
   const cls =
-    "w-full rounded-2xl border border-primary-foreground/20 bg-primary-foreground/5 px-4 py-3 text-center text-primary-foreground placeholder:text-primary-foreground/40 outline-none transition focus:border-accent focus:bg-primary-foreground/10 lg:text-left";
+    "w-full rounded-2xl border border-primary-foreground/20 bg-primary-foreground/5 px-4 py-3 text-center text-primary-foreground placeholder:text-primary-foreground/40 outline-none transition focus:border-accent focus:bg-primary-foreground/10 disabled:opacity-50 lg:text-left";
   return (
     <label className="block text-center lg:text-left">
       <span className="mb-2 block text-[11px] font-semibold uppercase tracking-[0.16em] text-primary-foreground/60">
         {label}
       </span>
       {textarea ? (
-        <textarea name={name} rows={4} className={cls} />
+        <textarea
+          name={name}
+          rows={4}
+          className={cls}
+          required={required}
+          disabled={disabled}
+        />
       ) : (
-        <input name={name} type={type} className={cls} />
+        <input
+          name={name}
+          type={type}
+          className={cls}
+          required={required}
+          disabled={disabled}
+        />
       )}
     </label>
   );
